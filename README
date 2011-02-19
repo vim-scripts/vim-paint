@@ -1,0 +1,21 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=3457
+
+Example:
+  let canvas = paint#canvas#new(128, 128)
+  call canvas.draw_line([0, 0], [63, 63], [0, 0, 0], 1)
+  call canvas.draw_line([0, 63], [63, 0], [0, 0, 0], 2)
+  call canvas.draw_rect([0, 64], [63, 127], [255, 0, 0], -1)
+  call canvas.draw_rect([32, 64], [63, 95], [0, 255, 0], 1)
+  call canvas.draw_ellipse([64, 0], [127, 63], [0, 0, 255], -1)
+  call canvas.draw_ellipse([64, 32], [95, 63], [255, 255, 0], 2)
+  for x in range(64)
+    for y in range(64)
+      call canvas.set_pixel(x + 64, y + 64, [x * 256 / 64, y * 256 / 64, 0])
+    endfor
+  endfor
+  let font = paint#bdf#loadfile(globpath(&rtp, 'font/mplus/mplus_f12r.bdf'))
+  call canvas.draw_text("Hello, Vim", [64, 76], font, [255, 255, 255])
+  call canvas.save('example.bmp')
+
+  result: http://ynkdir.github.com/vim-paint/example.bmp
+
